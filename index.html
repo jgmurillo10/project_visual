@@ -15,10 +15,86 @@
   -webkit-transition: r 0.5s; /* Safari */
   transition: r 0.5s;
 }
+/*rgb(39,61,127) header*/
+/*rgb(36,156,213) footer*/
+.container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 10vh 85vh 5vh;
+    grid-row-gap: 0;
+    align-items: stretch;
+    grid-template-areas:
+        "h h h h h h h h h h h h"
+        "m m c c c c c c c c c c"
+        "f f f f f f f f f f f f";
+    /*margin-top: 0;
+    padding-top: 0;*/
+}
+.header {
+    grid-area: h;
+    background-color: rgb(39,61,127);
+    color: white;
+    padding: 5px;
+    padding-left: 2em;
+}
+.menu {
+    grid-area: m;
+    background-color: rgb(247,252,254);
+    /*background: black;*/
+    /*padding: 0;*/
+    margin: 0;
+}
+.content {
+    grid-area: c;
+    /*margin: 0;*/
+}
+body {
+  font-family:  Tahoma, Helvetica, Geneva, sans-serif;
+}
+h1 {
+  font-weight: 100;
+}
+.footer {
+   grid-area: f;
+   background-color: rgb(36,156,213);
+   margin: 0;
+}
 
-
+@media screen and (max-width: 640px) {
+    .container {
+        grid-template-areas:
+            "m m m m m m h h h h h h"
+            "c c c c c c c c c c c c"
+            "f f f f f f f f f f f f";
+    }
+}
 </style>
-<svg width="960" height="600"></svg>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>
+        Fulbright Science & Technology Association
+      </h1>
+    </header>
+    <menu class="menu">
+      <ul>
+        <a href="">Home</a>
+        <a href="">
+          Find my colleague!
+        </a>
+
+      </ul>
+    </menu>
+    <main class="content">
+      <svg width="960" height="600"></svg>
+    </main>
+    <footer class="footer">
+
+    </footer>
+  </div>
+</body>
+
+
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 var tooltip = d3.select("body")
