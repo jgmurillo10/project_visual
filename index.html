@@ -32,7 +32,8 @@ var tooltip = d3.select("body")
 
 var svg = d3.select("svg"),
     width = +svg.attr("width"),
-    height = +svg.attr("height");
+    height = +svg.attr("height"),
+    radius = 5;
 
 var color = d3.scaleOrdinal(d3.schemeCategory20);
 
@@ -56,7 +57,7 @@ d3.json("graph.json", function(error, graph) {
     .selectAll("circle")
     .data(graph.nodes)
     .enter().append("circle")
-      .attr("r", 5)
+      .attr("r", radius)
       .attr("fill", function(d) { return color(d.group); })
       .call(d3.drag()
           .on("start", dragstarted)
@@ -80,10 +81,12 @@ d3.json("graph.json", function(error, graph) {
         .attr("y1", function(d) { return d.source.y; })
         .attr("x2", function(d) { return d.target.x; })
         .attr("y2", function(d) { return d.target.y; });
-
-    node
-        .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; });
+        node
+                .attr("cx", function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
+                .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
+    // node
+    //     .attr("cx", function(d) { return d.x; })
+    //     .attr("cy", function(d) { return d.y; });
   }
 
 
@@ -96,7 +99,7 @@ d3.json("graph.json", function(error, graph) {
           nodes.push(l.source);
         if(!inArr(l.target))
           nodes.push(l.target);
-        return 5;
+        return radius;
       }
     });
     link.style('stroke-opacity', function(l){
@@ -110,12 +113,12 @@ d3.json("graph.json", function(error, graph) {
     console.log(nodes);
     node.attr('r', function(n){
       // console.log(source,target)
-      var inp = 5
+      var inp = radius
       for (var i = 0; i < nodes.length; i++) {
 
         if (n.id === nodes[i].id){
           console.log('if');
-          inp = 7
+          inp = radius+2
         }
 
       }
