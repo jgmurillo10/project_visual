@@ -1,0 +1,474 @@
+{
+   "nodes":[
+      {
+         "id":"Alvaro Gonzalez",
+         "group":"2008"
+      },
+      {
+         "id":"Amanda Franklin",
+         "group":"2012"
+      },
+      {
+         "id":"Anupam Das",
+         "group":"2010"
+      },
+      {
+         "id":"Arturo Lopez Pineda",
+         "group":"2010"
+      },
+      {
+         "id":"Biraj M Karmacharya",
+         "group":"2011"
+      },
+      {
+         "id":"Charles de Bourcy",
+         "group":"2012"
+      },
+      {
+         "id":"Chathra Hendahewa",
+         "group":"2008"
+      },
+      {
+         "id":"Delgerjargal Dugarjav (Degi)",
+         "group":"2008"
+      },
+      {
+         "id":"Derry Wijaya",
+         "group":"2010"
+      },
+      {
+         "id":"Dhilung Kirat",
+         "group":"2009"
+      },
+      {
+         "id":"Ellen Roche",
+         "group":"2011"
+      },
+      {
+         "id":"Emily Ferenczi",
+         "group":"2010"
+      },
+      {
+         "id":"Filip Stankovikj",
+         "group":"2011"
+      },
+      {
+         "id":"GUAN WANG",
+         "group":"2008"
+      },
+      {
+         "id":"Imre Treufeld",
+         "group":"2008"
+      },
+      {
+         "id":"Ivana Peran",
+         "group":"2009"
+      },
+      {
+         "id":"Jephias Gwamuri",
+         "group":"2012"
+      },
+      {
+         "id":"Jonathan Rameseder",
+         "group":"2008"
+      },
+      {
+         "id":"Krisada Mick Kritayakirana ",
+         "group":"2007"
+      },
+      {
+         "id":"Lamis Yehia",
+         "group":"2011"
+      },
+      {
+         "id":"Mcebisi Mkhwanazi",
+         "group":"2010"
+      },
+      {
+         "id":"Mehmet Dogar",
+         "group":"2008"
+      },
+      {
+         "id":"Michael Beeler",
+         "group":"2012"
+      },
+      {
+         "id":"Michel Eduardo Vargas Vallejo",
+         "group":"2010"
+      },
+      {
+         "id":"Nicholas Fancourt",
+         "group":"2011"
+      },
+      {
+         "id":"Po-Chun Hsu",
+         "group":"2010"
+      },
+      {
+         "id":"Saul Daniel Ddumba",
+         "group":"2010"
+      },
+      {
+         "id":"Syed Ishtiaque Ahmed",
+         "group":"2011"
+      },
+      {
+         "id":"Tamaki Bieri",
+         "group":"2010"
+      },
+      {
+         "id":"Vivek Bhandari",
+         "group":"2012"
+      },
+      {
+         "id":"Watheq Al-Mudhafar",
+         "group":"2011"
+      },
+      {
+         "id":"Youngseok Kim",
+         "group":"2010"
+      }
+   ],
+   "links":[
+      {
+         "source":"Amanda Franklin",
+         "target":"Mcebisi Mkhwanazi",
+         "value":1
+      },
+      {
+         "source":"Amanda Franklin",
+         "target":"Saul Daniel Ddumba",
+         "value":1
+      },
+      {
+         "source":"Arturo Lopez Pineda",
+         "target":"Ivana Peran",
+         "value":1
+      },
+      {
+         "source":"Arturo Lopez Pineda",
+         "target":"Lamis Yehia",
+         "value":1
+      },
+      {
+         "source":"Charles de Bourcy",
+         "target":"Ellen Roche",
+         "value":1
+      },
+      {
+         "source":"Charles de Bourcy",
+         "target":"Emily Ferenczi",
+         "value":1
+      },
+      {
+         "source":"Charles de Bourcy",
+         "target":"GUAN WANG",
+         "value":2
+      },
+      {
+         "source":"Chathra Hendahewa",
+         "target":"Derry Wijaya",
+         "value":1
+      },
+      {
+         "source":"Derry Wijaya",
+         "target":"Chathra Hendahewa",
+         "value":1
+      },
+      {
+         "source":"Dhilung Kirat",
+         "target":"Mcebisi Mkhwanazi",
+         "value":1
+      },
+      {
+         "source":"Dhilung Kirat",
+         "target":"Mehmet Dogar",
+         "value":1
+      },
+      {
+         "source":"Ellen Roche",
+         "target":"Charles de Bourcy",
+         "value":1
+      },
+      {
+         "source":"Ellen Roche",
+         "target":"Emily Ferenczi",
+         "value":1
+      },
+      {
+         "source":"Ellen Roche",
+         "target":"GUAN WANG",
+         "value":1
+      },
+      {
+         "source":"Ellen Roche",
+         "target":"Lamis Yehia",
+         "value":1
+      },
+      {
+         "source":"Ellen Roche",
+         "target":"Saul Daniel Ddumba",
+         "value":1
+      },
+      {
+         "source":"Emily Ferenczi",
+         "target":"Charles de Bourcy",
+         "value":1
+      },
+      {
+         "source":"Emily Ferenczi",
+         "target":"Ellen Roche",
+         "value":1
+      },
+      {
+         "source":"Emily Ferenczi",
+         "target":"GUAN WANG",
+         "value":1
+      },
+      {
+         "source":"Emily Ferenczi",
+         "target":"Ivana Peran",
+         "value":2
+      },
+      {
+         "source":"Emily Ferenczi",
+         "target":"Lamis Yehia",
+         "value":2
+      },
+      {
+         "source":"Filip Stankovikj",
+         "target":"Saul Daniel Ddumba",
+         "value":2
+      },
+      {
+         "source":"Filip Stankovikj",
+         "target":"Vivek Bhandari",
+         "value":2
+      },
+      {
+         "source":"GUAN WANG",
+         "target":"Charles de Bourcy",
+         "value":2
+      },
+      {
+         "source":"GUAN WANG",
+         "target":"Ellen Roche",
+         "value":1
+      },
+      {
+         "source":"GUAN WANG",
+         "target":"Emily Ferenczi",
+         "value":1
+      },
+      {
+         "source":"Imre Treufeld",
+         "target":"Michael Beeler",
+         "value":1
+      },
+      {
+         "source":"Imre Treufeld",
+         "target":"Syed Ishtiaque Ahmed",
+         "value":1
+      },
+      {
+         "source":"Ivana Peran",
+         "target":"Arturo Lopez Pineda",
+         "value":1
+      },
+      {
+         "source":"Ivana Peran",
+         "target":"Emily Ferenczi",
+         "value":2
+      },
+      {
+         "source":"Ivana Peran",
+         "target":"Lamis Yehia",
+         "value":3
+      },
+      {
+         "source":"Lamis Yehia",
+         "target":"Arturo Lopez Pineda",
+         "value":1
+      },
+      {
+         "source":"Lamis Yehia",
+         "target":"Ellen Roche",
+         "value":1
+      },
+      {
+         "source":"Lamis Yehia",
+         "target":"Emily Ferenczi",
+         "value":2
+      },
+      {
+         "source":"Lamis Yehia",
+         "target":"Ivana Peran",
+         "value":3
+      },
+      {
+         "source":"Lamis Yehia",
+         "target":"Saul Daniel Ddumba",
+         "value":1
+      },
+      {
+         "source":"Mcebisi Mkhwanazi",
+         "target":"Amanda Franklin",
+         "value":1
+      },
+      {
+         "source":"Mcebisi Mkhwanazi",
+         "target":"Dhilung Kirat",
+         "value":1
+      },
+      {
+         "source":"Mcebisi Mkhwanazi",
+         "target":"Michel Eduardo Vargas Vallejo",
+         "value":2
+      },
+      {
+         "source":"Mcebisi Mkhwanazi",
+         "target":"Nicholas Fancourt",
+         "value":1
+      },
+      {
+         "source":"Mcebisi Mkhwanazi",
+         "target":"Saul Daniel Ddumba",
+         "value":4
+      },
+      {
+         "source":"Mehmet Dogar",
+         "target":"Dhilung Kirat",
+         "value":1
+      },
+      {
+         "source":"Michael Beeler",
+         "target":"Imre Treufeld",
+         "value":1
+      },
+      {
+         "source":"Michael Beeler",
+         "target":"Saul Daniel Ddumba",
+         "value":1
+      },
+      {
+         "source":"Michael Beeler",
+         "target":"Syed Ishtiaque Ahmed",
+         "value":1
+      },
+      {
+         "source":"Michel Eduardo Vargas Vallejo",
+         "target":"Mcebisi Mkhwanazi",
+         "value":2
+      },
+      {
+         "source":"Michel Eduardo Vargas Vallejo",
+         "target":"Nicholas Fancourt",
+         "value":1
+      },
+      {
+         "source":"Michel Eduardo Vargas Vallejo",
+         "target":"Saul Daniel Ddumba",
+         "value":3
+      },
+      {
+         "source":"Michel Eduardo Vargas Vallejo",
+         "target":"Syed Ishtiaque Ahmed",
+         "value":1
+      },
+      {
+         "source":"Nicholas Fancourt",
+         "target":"Mcebisi Mkhwanazi",
+         "value":1
+      },
+      {
+         "source":"Nicholas Fancourt",
+         "target":"Michel Eduardo Vargas Vallejo",
+         "value":1
+      },
+      {
+         "source":"Nicholas Fancourt",
+         "target":"Saul Daniel Ddumba",
+         "value":1
+      },
+      {
+         "source":"Saul Daniel Ddumba",
+         "target":"Amanda Franklin",
+         "value":1
+      },
+      {
+         "source":"Saul Daniel Ddumba",
+         "target":"Ellen Roche",
+         "value":1
+      },
+      {
+         "source":"Saul Daniel Ddumba",
+         "target":"Filip Stankovikj",
+         "value":2
+      },
+      {
+         "source":"Saul Daniel Ddumba",
+         "target":"Lamis Yehia",
+         "value":1
+      },
+      {
+         "source":"Saul Daniel Ddumba",
+         "target":"Mcebisi Mkhwanazi",
+         "value":4
+      },
+      {
+         "source":"Saul Daniel Ddumba",
+         "target":"Michael Beeler",
+         "value":1
+      },
+      {
+         "source":"Saul Daniel Ddumba",
+         "target":"Michel Eduardo Vargas Vallejo",
+         "value":3
+      },
+      {
+         "source":"Saul Daniel Ddumba",
+         "target":"Nicholas Fancourt",
+         "value":1
+      },
+      {
+         "source":"Saul Daniel Ddumba",
+         "target":"Syed Ishtiaque Ahmed",
+         "value":1
+      },
+      {
+         "source":"Saul Daniel Ddumba",
+         "target":"Vivek Bhandari",
+         "value":1
+      },
+      {
+         "source":"Syed Ishtiaque Ahmed",
+         "target":"Imre Treufeld",
+         "value":1
+      },
+      {
+         "source":"Syed Ishtiaque Ahmed",
+         "target":"Michael Beeler",
+         "value":1
+      },
+      {
+         "source":"Syed Ishtiaque Ahmed",
+         "target":"Michel Eduardo Vargas Vallejo",
+         "value":1
+      },
+      {
+         "source":"Syed Ishtiaque Ahmed",
+         "target":"Saul Daniel Ddumba",
+         "value":1
+      },
+      {
+         "source":"Vivek Bhandari",
+         "target":"Filip Stankovikj",
+         "value":2
+      },
+      {
+         "source":"Vivek Bhandari",
+         "target":"Saul Daniel Ddumba",
+         "value":1
+      }
+   ]
+}
