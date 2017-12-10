@@ -14,6 +14,7 @@
   stroke-width: 1.5px;
   -webkit-transition: r 0.5s; /* Safari */
   transition: r 0.5s;
+  cursor: pointer;
 }
 /*rgb(39,61,127) header*/
 /*rgb(36,156,213) footer*/
@@ -25,7 +26,7 @@
     align-items: stretch;
     grid-template-areas:
         "h h h h h h h h h h h h"
-        "m m c c c c c c c c c c"
+        "c c c c c c c c c c c c"
         "f f f f f f f f f f f f";
     /*margin-top: 0;
     padding-top: 0;*/
@@ -58,6 +59,8 @@ h1 {
    grid-area: f;
    background-color: rgb(36,156,213);
    margin: 0;
+   padding: 5px;
+   color: white;
 }
 
 @media screen and (max-width: 640px) {
@@ -78,18 +81,25 @@ h1 {
     </header>
     <menu class="menu">
       <ul>
-        <a href="">Home</a>
-        <a href="">
-          Find my colleague!
-        </a>
-
+        <li>
+          <a href="">Home</a>
+        </li>
+        <li>
+          <a href="">
+            Find my colleagues!
+          </a>
+        </li>
       </ul>
     </menu>
     <main class="content">
+      <select id="opts" class="" name="">
+      </select>
+      <button id="search" type="button" name="button">Search</button>
+      <button disabled id="back" type="button" name="button">Reset view</button>
       <svg width="960" height="600"></svg>
     </main>
     <footer class="footer">
-
+      Copyright 2017
     </footer>
   </div>
 </body>
@@ -99,6 +109,7 @@ h1 {
 <script>
 var tooltip = d3.select("body")
   .append("div")
+  // .id('tooltip')
   .style("position", "absolute")
   .style("z-index", "10")
   .style("visibility", "hidden")
@@ -109,7 +120,10 @@ var tooltip = d3.select("body")
 var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height"),
-    radius = 5;
+    radius = 5,
+    previousNode = "",
+    clicked = false,
+    graph;
 
 var color = d3.scaleOrdinal(d3.schemeCategory20);
 
@@ -117,31 +131,61 @@ var simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(function(d) { return d.id; }))
     .force("charge", d3.forceManyBody())
     .force("center", d3.forceCenter(width / 2, height / 2));
+var back = d3.select("#back")
+              .on("click", handleBack);
+function handleBack() {
+  clicked = false;
+  document.getElementById('back').disabled = true;
+  console.log(graph);
+  updateGraph(graph);
+}
 
-d3.json("graph.json", function(error, graph) {
-  if (error) throw error;
-
+function updateGraph(graph) {
+  d3.selectAll("g").remove();
+  d3.selectAll("title").remove()
+  d3.select("#tooltip").remove()
+  tooltip.text('');
   var link = svg.append("g")
       .attr("class", "links")
     .selectAll("line")
     .data(graph.links)
     .enter().append("line")
       .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
-
+  var selection = d3.select("#opts")
+                    .on("change", handleChangeSelect);
+  var options = selection.selectAll("option")
+                  .data(graph.nodes);
+  options.enter()
+         .append("option")
+         .text(function (d) {
+           return d.id;
+         })
+         .attr('value',function (d) {
+           return d.id;
+         });
+  options.text(function (d) {
+    return d.id;
+  })
+  options.exit().remove();
   var node = svg.append("g")
       .attr("class", "nodes")
     .selectAll("circle")
     .data(graph.nodes)
     .enter().append("circle")
+      .attr("id",function (d) {
+        return d.id;
+      })
       .attr("r", radius)
       .attr("fill", function(d) { return color(d.group); })
       .call(d3.drag()
           .on("start", dragstarted)
           .on("drag", dragged)
           .on("end", dragended))
-  				.on("mouseover", handleMouseOver)
+          .on("mouseover", handleMouseOver)
           .on("mouseout", handleMouseOut)
-          .on("mousemove", handleMouseMove);
+          .on("mousemove", handleMouseMove)
+          .on("click", handleClick);
+
   node.append("title")
       .text(function(d) { return d.id; });
   simulation
@@ -167,7 +211,93 @@ d3.json("graph.json", function(error, graph) {
 
 
 
-  function handleMouseOver(d,i){
+  function handleMouseOver(d,a,b,self){
+    if(clicked){
+      tooltip.text(d.id );
+      return tooltip.style("visibility", "visible");
+    }
+    else{
+      var nodes = [];
+      console.log(d,this);
+      link.style('stroke-width', function(l) {
+        if (d === l.source || d === l.target){
+          if(!inArr(nodes,l.source))
+            nodes.push(l.source);
+          if(!inArr(l.target))
+            nodes.push(l.target);
+          return radius;
+        }
+      });
+      link.style('stroke-opacity', function(l){
+        if (d === l.source || d === l.target){
+          return 0.8;
+        }
+        else {
+          return 0.26
+        }
+      })
+      node.attr('r', function(n){
+        // console.log(source,target)
+        var inp = radius
+        for (var i = 0; i < nodes.length; i++) {
+          if (n.id === nodes[i].id){
+            inp = radius+2
+          }
+        }
+        return inp;
+      })
+      node.style('opacity', function(n) {
+        var inp = 0.4;
+        for (var i = 0; i < nodes.length; i++) {
+          if (n.id === nodes[i].id){
+            inp = 1;
+          }
+        }
+        return inp;
+      })
+
+      if(self){
+        d3.select(self).attr("r", 12);
+      }
+      else{
+        d3.select(this).attr("r", 12);
+      }
+      tooltip.text(d.id );
+      return tooltip.style("visibility", "visible");
+    }
+
+  }
+  function inArr(arr,item){
+    for (var i = 0; i < arr.length; i++) {
+      if(arr[i].id === item.id)
+        return true;
+    }
+    return false;
+  }
+  function handleMouseMove(d){
+    return tooltip.style("top",
+       (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+  }
+
+  function handleMouseOut(d,i){
+    console.log(clicked);
+    if(clicked)
+      return;
+    link.style('stroke-width', function(l) {
+        Math.sqrt(l.value);
+      });
+    link.style('stroke-opacity', function(l){
+      if (d === l.source || d === l.target)
+        return 0.26;
+    });
+
+    node.attr('r', function(n){
+      return 5;
+    });
+    node.style('opacity', 1.0);
+    return tooltip.style("visibility", "hidden");
+  }
+  function handleClick(d) {
     var nodes = [];
     link.style('stroke-width', function(l) {
       if (d === l.source || d === l.target){
@@ -183,66 +313,64 @@ d3.json("graph.json", function(error, graph) {
         return 0.8;
       }
       else {
-        return 0.26
+        return 0;
       }
     })
-    console.log(nodes);
     node.attr('r', function(n){
       // console.log(source,target)
-      var inp = radius
+      var inp = 0
       for (var i = 0; i < nodes.length; i++) {
-
         if (n.id === nodes[i].id){
-          console.log('if');
           inp = radius+2
         }
-
       }
       return inp;
     })
     node.style('opacity', function(n) {
-      var inp = 0.4;
+      var inp = 0.0;
       for (var i = 0; i < nodes.length; i++) {
-
         if (n.id === nodes[i].id){
-          console.log('if');
           inp = 1;
         }
-
       }
       return inp;
     })
     d3.select(this).attr("r", 12);
     tooltip.text(d.id );
+    clicked = true;
+    // back.attr('disabled', false);
+    document.getElementById('back').disabled = false;
+    return tooltip.style("visibility", "visible");
 
-     return tooltip.style("visibility", "visible");
   }
-  function inArr(arr,item){
-    for (var i = 0; i < arr.length; i++) {
-      if(arr[i].id === item.id)
-        return true;
-    }
-    return false;
+  function handleChangeSelect() {
+    selectedValue = selection.property('value');
+    var nodeSelected;
+    var nodePrev;
+    var n = d3.select("#"+selectedValue).attr('r',14);
+    node.each(function (d) {
+      if(d.id === selectedValue)
+        nodeSelected = d;
+      if(d.id === previousNode)
+        nodePrev = d;
+    })
+    // console.log(nodeSelected);
+    // console.log(nodePrev);
+    selectNode(selectedValue)
+    previousNode = selectedValue;
+    // filter graph
+    // update(filteredGraph);
   }
-  function handleMouseMove(d){
-    return tooltip.style("top",
-       (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
-  }
-  function handleMouseOut(d,i){
-    link.style('stroke-width', function(l) {
-        Math.sqrt(l.value);
-      });
-    link.style('stroke-opacity', function(l){
-      if (d === l.source || d === l.target)
-        return 0.26;
-    });
+  function selectNode(node) {
 
-    node.attr('r', function(n){
-      return 5;
-    });
-    node.style('opacity', 1.0);
-    return tooltip.style("visibility", "hidden");
+    // console.log('actual',nodeId,'previousNode',previousNode);
+    // console.log(this);
   }
+}
+d3.json("graph.json", function(error, newgraph) {
+  if (error) throw error;
+  graph = newgraph
+  updateGraph(graph)
 });
 
 function dragstarted(d) {
