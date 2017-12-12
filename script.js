@@ -19,8 +19,14 @@
                   .text("a simple tooltip");
   var card = d3.select("body")
                   .append("div")
-                  .attr("class", "card")
-                  .text("text");
+                  .attr("class", "card");
+  var title = card.append("h1")
+                  .text("title");
+  var img = card.append("img")
+                .style("width","80%")
+                .attr('src','https://es.miami-institute.com/wp-content/uploads/2015/02/placeholder-500x5001.gif');
+  var content = card.append("div")
+                    .text("content");
   var width = x,
       height = y,
       radius = 5,
@@ -102,7 +108,7 @@
     }
     function handleMouseOver(d){
       if(clicked) {
-        card.text(d.id)
+        title.text(d.id)
         tooltip.text(d.id );
         return tooltip.style("visibility", "visible");
       }
@@ -144,7 +150,7 @@
           return inp;
         })
         d3.select(this).attr("r", 12);
-        card.text(d.id)
+        title.text(d.id)
         tooltip.text(d.id );
         return tooltip.style("visibility", "visible");
       }
