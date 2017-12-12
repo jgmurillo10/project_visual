@@ -186,45 +186,37 @@ function updateGraph(graph) {
   d3.selectAll("title").remove()
   tooltip.text('');
   var link = svg.append("g")
-      .attr("class", "links")
-    .selectAll("line")
-    .data(graph.links)
-    .enter().append("line")
-      .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
+                .attr("class", "links")
+                .selectAll("line")
+                .data(graph.links)
+                .enter().append("line")
+                .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
   var selection = d3.select("#opts")
                     .on("change", handleChangeSelect);
   var options = selection.selectAll("option")
                   .data(graph.nodes);
   options.enter()
          .append("option")
-         .text(function (d) {
-           return d.id;
-         })
-         .attr('value',function (d) {
-           return d.id;
-         });
-  options.text(function (d) {
-    return d.id;
-  })
+         .text(d =>d.id )
+         .attr('value',d => d.id);
+  options.text(d=> d.id)
   options.exit().remove();
   var node = svg.append("g")
-      .attr("class", "nodes")
-    .selectAll("circle")
-    .data(graph.nodes)
-    .enter().append("circle")
-      .attr("id",function (d) {
-        return d.id.replace(' ','-');
-      })
-      .attr("r", radius)
-      .attr("fill", function(d) { return color(d.group); })
-      .call(d3.drag()
-          .on("start", dragstarted)
-          .on("drag", dragged)
-          .on("end", dragended))
-          .on("mouseover", handleMouseOver)
-          .on("mouseout", handleMouseOut)
-          .on("mousemove", handleMouseMove)
-          .on("click", handleClick);
+                .attr("class", "nodes")
+                .selectAll("circle")
+                .data(graph.nodes)
+                .enter().append("circle")
+                .attr("id",d => d.id.replace(' ','-'))
+                .attr("r", radius)
+                .attr("fill", d => color(d.group))
+                .call(d3.drag()
+                    .on("start", dragstarted)
+                    .on("drag", dragged)
+                    .on("end", dragended))
+                    .on("mouseover", handleMouseOver)
+                    .on("mouseout", handleMouseOut)
+                    .on("mousemove", handleMouseMove)
+                    .on("click", handleClick);
 
   node.append("title")
       .text(function(d) { return d.id; });
@@ -233,31 +225,25 @@ function updateGraph(graph) {
       .on("tick", ticked);
 
   simulation.force("link")
-      .links(graph.links);
+            .links(graph.links);
 
   function ticked() {
+    //boundaries into the svg
     link
-        // .attr("x1", function(d) { return d.source.x; })
-        // .attr("y1", function(d) { return d.source.y; })
-        // .attr("x2", function(d) { return d.target.x; })
-        // .attr("y2", function(d) { return d.target.y; });
         .attr("x1", function(d) { return d.source.x = Math.max(radius, Math.min(x - radius*10,  d.source.x)); })
         .attr("y1", function(d) { return d.source.y = Math.max(radius, Math.min(y - radius*25, d.source.y)); })
         .attr("x2", function(d) { return d.target.x = Math.max(radius, Math.min(x - radius*10, d.target.x)); })
         .attr("y2", function(d) { return d.target.y = Math.max(radius, Math.min(y - radius*25, d.target.y)); });
-        node
-                .attr("cx", function(d) { return d.x = Math.max(radius, Math.min(x - radius*2, d.x)); })
-                .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(y - radius*25, d.y)); });
+    node
+        .attr("cx", function(d) { return d.x = Math.max(radius, Math.min(x - radius*2, d.x)); })
+        .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(y - radius*25, d.y)); });
   }
-
-
-
   function handleMouseOver(d){
-    if(clicked){
+    if(clicked) {
       tooltip.text(d.id );
       return tooltip.style("visibility", "visible");
     }
-    else{
+    else {
       var nodes = [];
       link.style('stroke-width', function(l) {
         if (d === l.source || d === l.target){
@@ -277,7 +263,6 @@ function updateGraph(graph) {
         }
       })
       node.attr('r', function(n){
-        // console.log(source,target)
         var inp = radius
         for (var i = 0; i < nodes.length; i++) {
           if (n.id === nodes[i].id){
@@ -299,7 +284,6 @@ function updateGraph(graph) {
       tooltip.text(d.id );
       return tooltip.style("visibility", "visible");
     }
-
   }
   function inArr(arr,item){
     for (var i = 0; i < arr.length; i++) {
@@ -346,7 +330,6 @@ function updateGraph(graph) {
       return;
     }
     node.attr('r', function(n){
-      // console.log(source,target)
       var inp = 0
       for (var i = 0; i < nodes.length; i++) {
         if (n.id === nodes[i].id){
@@ -372,21 +355,17 @@ function updateGraph(graph) {
         return 0;
       }
     })
-
     d3.select(this).attr("r", 12);
     tooltip.text(d.id );
     clicked = true;
-    // back.attr('disabled', false);
     document.getElementById('back').disabled = false;
     return tooltip.style("visibility", "visible");
-
   }
   function handleChangeSelect() {
     selectedValue = selection.property('value');
     var nodeSelected;
     var nodePrev;
     node.attr('r',function (d,i) {
-      console.log(i);
       if(d.id === selectedValue)
           return 15;
       else
@@ -400,23 +379,18 @@ d3.json("graph.json", function(error, newgraph) {
   graph = newgraph
   updateGraph(graph)
 });
-
 function dragstarted(d) {
   if (!d3.event.active) simulation.alphaTarget(0.3).restart();
   d.fx = d.x;
   d.fy = d.y;
 }
-
 function dragged(d) {
   d.fx = d3.event.x;
   d.fy = d3.event.y;
 }
-
 function dragended(d) {
   if (!d3.event.active) simulation.alphaTarget(0);
   d.fx = null;
   d.fy = null;
 }
-
-
 </script>
