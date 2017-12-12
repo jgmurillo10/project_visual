@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
 .links line {
@@ -26,8 +28,7 @@
     align-items: stretch;
     grid-template-areas:
         "h h h h h h h h h h h h"
-        "m m c c c c c c c c c c"
-        "f f f f f f f f f f f f";
+        "c c c c c c c c c c c c";
     /*margin-top: 0;
     padding-top: 0;*/
 }
@@ -35,10 +36,11 @@
     grid-area: h;
     background-color: rgb(39,61,127);
     color: white;
-    padding: 5px;
     padding-left: 2em;
+    text-align: center;
 }
 .menu {
+    display: none;
     grid-area: m;
     background-color: rgb(247,252,254);
     /*background: black;*/
@@ -57,6 +59,7 @@ h1 {
 }
 .footer {
    grid-area: f;
+   display: none;
    background-color: rgb(36,156,213);
    margin: 0;
    padding: 5px;
@@ -76,6 +79,9 @@ li:hover {
 a:link {
     text-decoration: none;
 }
+svg {
+  border: 1px solid black;
+}
 ul {
   display: grid;
   list-style-type: none;
@@ -84,10 +90,13 @@ ul {
 @media screen and (max-width: 640px) {
     .container {
         grid-template-areas:
-            "m m m m m m h h h h h h"
-            "c c c c c c c c c c c c"
-            "f f f f f f f f f f f f";
+            "h h h h h h h h h h h h"
+            "c c c c c c c c c c c c";
     }
+    html{
+      font-size: 10px;
+    }
+
 }
 </style>
 <body>
@@ -110,10 +119,12 @@ ul {
       </ul>
     </menu>
     <main class="content">
-      <select id="opts" class="" name="">
-      </select>
-      <button id="search" type="button" name="button">Search</button>
-      <button disabled id="back" type="button" name="button">Reset view</button>
+      <div>
+        <select id="opts" class="" name="">
+        </select>
+        <button id="search" type="button" name="button">Search</button>
+        <button disabled id="back" type="button" name="button">Reset view</button>
+      </div>
       <svg width="960" height="600"></svg>
     </main>
     <footer class="footer">
@@ -125,9 +136,22 @@ ul {
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
+var svg = d3.select("svg");
+var w = window,
+    d = document,
+    e = d.documentElement,
+    x,
+    y;
+function updateWindow(){
+    x = w.innerWidth || e.clientWidth || g.clientWidth;
+    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+
+    svg.attr("width", x*0.98).attr("height", y*0.85);
+}
+updateWindow();
+d3.select(window).on('resize.updatesvg', updateWindow);
 var tooltip = d3.select("body")
   .append("div")
-  // .id('tooltip')
   .style("position", "absolute")
   .style("z-index", "10")
   .style("visibility", "hidden")
@@ -135,9 +159,8 @@ var tooltip = d3.select("body")
   .style("font-weight", "100")
   .text("a simple tooltip");
 
-var svg = d3.select("svg"),
-    width = +svg.attr("width"),
-    height = +svg.attr("height"),
+var width = x,
+    height = y,
     radius = 5,
     previousNode = "",
     clicked = false,
@@ -161,7 +184,6 @@ function handleBack() {
 function updateGraph(graph) {
   d3.selectAll("g").remove();
   d3.selectAll("title").remove()
-  d3.select("#tooltip").remove()
   tooltip.text('');
   var link = svg.append("g")
       .attr("class", "links")
@@ -215,21 +237,22 @@ function updateGraph(graph) {
 
   function ticked() {
     link
-        .attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
+        // .attr("x1", function(d) { return d.source.x; })
+        // .attr("y1", function(d) { return d.source.y; })
+        // .attr("x2", function(d) { return d.target.x; })
+        // .attr("y2", function(d) { return d.target.y; });
+        .attr("x1", function(d) { return d.source.x = Math.max(radius, Math.min(x - radius*10,  d.source.x)); })
+        .attr("y1", function(d) { return d.source.y = Math.max(radius, Math.min(y - radius*25, d.source.y)); })
+        .attr("x2", function(d) { return d.target.x = Math.max(radius, Math.min(x - radius*10, d.target.x)); })
+        .attr("y2", function(d) { return d.target.y = Math.max(radius, Math.min(y - radius*25, d.target.y)); });
         node
-                .attr("cx", function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
-                .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
-    // node
-    //     .attr("cx", function(d) { return d.x; })
-    //     .attr("cy", function(d) { return d.y; });
+                .attr("cx", function(d) { return d.x = Math.max(radius, Math.min(x - radius*2, d.x)); })
+                .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(y - radius*25, d.y)); });
   }
 
 
 
-  function handleMouseOver(d,a,b,self){
+  function handleMouseOver(d){
     if(clicked){
       tooltip.text(d.id );
       return tooltip.style("visibility", "visible");
@@ -272,13 +295,7 @@ function updateGraph(graph) {
         }
         return inp;
       })
-
-      if(self){
-        d3.select(self).attr("r", 12);
-      }
-      else{
-        d3.select(this).attr("r", 12);
-      }
+      d3.select(this).attr("r", 12);
       tooltip.text(d.id );
       return tooltip.style("visibility", "visible");
     }
@@ -324,6 +341,10 @@ function updateGraph(graph) {
         return radius;
       }
     });
+    //if there are no Association or links then do nothing
+    if (nodes.length === 0) {
+      return;
+    }
     node.attr('r', function(n){
       // console.log(source,target)
       var inp = 0
@@ -364,17 +385,6 @@ function updateGraph(graph) {
     selectedValue = selection.property('value');
     var nodeSelected;
     var nodePrev;
-    // var n = d3.select("#"+selectedValue.replace(' ','-'));
-    // function repeat() {
-    //   n.attr('r',15)
-    //     .transition()
-    //     .duration(500)
-    //     .attr('r',radius)
-    //     .transition()
-    //     .duraction(500)
-    //     .on("end",repeat);
-    // }
-
     node.attr('r',function (d,i) {
       console.log(i);
       if(d.id === selectedValue)
@@ -382,37 +392,7 @@ function updateGraph(graph) {
       else
           return radius;
     })
-
-
-
-    // console.log(nodeSelected);
-    // console.log(nodePrev);
-    selectNode(nodeSelected)
-    unselect(nodePrev)
     previousNode = selectedValue;
-    // filter graph
-    // update(filteredGraph);
-  }
-  function selectNode(n) {
-    // console.log('select',n);
-    // console.log(node);
-    // node.attr('r', function(d) {
-    //   if (d.id === node.id ){
-    //     console.log('if');
-    //     return 14;
-    //   }
-    //   else {
-    //     return radius;
-    //   }
-    // })
-
-
-    // d3.select("#"+node.id)
-    // console.log('actual',nodeId,'previousNode',previousNode);
-    // console.log(this);
-  }
-  function unselect(node){
-    // console.log('select',node);
   }
 }
 d3.json("graph.json", function(error, newgraph) {
