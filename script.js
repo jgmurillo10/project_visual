@@ -19,7 +19,8 @@
                   .text("a simple tooltip");
   var card = d3.select("body")
                   .append("div")
-                  .attr("class", "card");
+                  .attr("class", "card")
+                  // .text("Here is where the information about the person your hover will be shown. Information like Name, photo and description about the project he/she is currently working on.");
   var title = card.append("h1")
                   .text("title");
   var img = card.append("img")
@@ -32,6 +33,7 @@
       radius = 5,
       previousNode = "",
       clicked = false,
+      idLastClicked = "",
       graph;
 
   var color = d3.scaleOrdinal(d3.schemeCategory20);
@@ -45,11 +47,10 @@
   function handleBack() {
     clicked = false;
     document.getElementById('back').disabled = true;
-    console.log(graph);
-    updateGraph(graph);
+    updateGraph();
   }
 
-  function updateGraph(graph) {
+  function updateGraph() {
     d3.selectAll("g").remove();
     d3.selectAll("title").remove()
     tooltip.text('');
@@ -185,6 +186,14 @@
       return tooltip.style("visibility", "hidden");
     }
     function handleClick(d) {
+      if(idLastClicked === d.id){
+        updateGraph();
+        idLastClicked="";
+        clicked = false;
+        document.getElementById('back').disabled = true;
+        return;
+      }
+      idLastClicked=d.id;
       var nodes = [];
       link.style('stroke-width', function(l) {
         if (d === l.source || d === l.target){
@@ -247,7 +256,7 @@
   d3.json("graph.json", function(error, newgraph) {
     if (error) throw error;
     graph = newgraph
-    updateGraph(graph)
+    updateGraph()
   });
   function dragstarted(d) {
     if (!d3.event.active) simulation.alphaTarget(0.3).restart();
