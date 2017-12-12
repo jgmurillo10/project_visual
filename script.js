@@ -108,9 +108,11 @@
           .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(y - radius*25, d.y)); });
     }
     function handleMouseOver(d){
+      card.style("visibility","visible")
+      title.text(d.id);
+      content.text(d.description);
+      tooltip.text(d.id );
       if(clicked) {
-        title.text(d.id)
-        tooltip.text(d.id );
         return tooltip.style("visibility", "visible");
       }
       else {
@@ -151,8 +153,6 @@
           return inp;
         })
         d3.select(this).attr("r", 12);
-        title.text(d.id)
-        tooltip.text(d.id );
         return tooltip.style("visibility", "visible");
       }
     }
@@ -169,6 +169,7 @@
     }
 
     function handleMouseOut(d,i){
+      card.style("visibility","hidden")
       if(clicked)
         return;
       link.style('stroke-width', function(l) {

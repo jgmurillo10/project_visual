@@ -2,227 +2,131 @@
    "nodes":[
       {
          "id":"Alvaro Gonzalez",
-         "group":"2008",
-         "keywords":"heterodyne receivers|receivers|antennas|radio astronomy",
-         "description":"Heterodyne receivers and antennas for (sub)mm-wave radio astronomy",
-         "size":8
+         "group":"2008"
       },
       {
          "id":"Amanda Franklin",
-         "group":"2012",
-         "keywords":"animal communication|animal coloration|communication|effects|science|climate change",
-         "description":"Animal communication, animal colouration, environmental effects on communication, climate change, marine science.",
-         "size":8
+         "group":"2012"
       },
       {
          "id":"Anupam Das",
-         "group":"2010",
-         "keywords":"privacy|internet of things|IoT",
-         "description":"Privacy in the era of Internet of Things (IoT)",
-         "size":8
+         "group":"2010"
       },
       {
          "id":"Arturo Lopez Pineda",
-         "group":"2010",
-         "keywords":"low cost|technology|cancer|cost",
-         "description":"Low cost technology for cancer",
-         "size":8
+         "group":"2010"
       },
       {
          "id":"Biraj M Karmacharya",
-         "group":"2011",
-         "keywords":"public health|health policy|health systems|epidemiology|health system",
-         "description":"Public Health (Epidemiology, Health Systems, Health Policy)",
-         "size":8
+         "group":"2011"
       },
       {
          "id":"Charles de Bourcy",
-         "group":"2012",
-         "keywords":"precision medicine|medicine|data-driven medicine",
-         "description":"Precision medicine, data-driven medicine",
-         "size":8
+         "group":"2012"
       },
       {
          "id":"Chathra Hendahewa",
-         "group":"2008",
-         "keywords":"data mining|data mining projects|fraud detection|fraud|natural language|language|natural language processing",
-         "description":"Data Mining projects, Fraud Detection, Natural Language Processing",
-         "size":8
+         "group":"2008"
       },
       {
          "id":"Delgerjargal Dugarjav (Degi)",
-         "group":"2008",
-         "keywords":"ecosystem modelling|restoration ecology|biomass",
-         "description":"Ecosystem modelling, Restoration ecology, Biomass",
-         "size":8
+         "group":"2008"
       },
       {
          "id":"Derry Wijaya",
-         "group":"2010",
-         "keywords":"machine reading|machine|machine translation|information extraction|natural language processing",
-         "description":"Machine reading, machine translation, information extraction, natural language processing",
-         "size":8
+         "group":"2010"
       },
       {
          "id":"Dhilung Kirat",
-         "group":"2009",
-         "keywords":"machine learning|methods|computer security problems|security",
-         "description":"Applying machine-learning/cognitive-computing methods to computer security problems.",
-         "size":8
+         "group":"2009"
       },
       {
          "id":"Ellen Roche",
-         "group":"2011",
-         "keywords":"health|medicine|devices|cardiovascular|medical devices",
-         "description":"Cardiovascular medical devices",
-         "size":8
+         "group":"2011"
       },
       {
          "id":"Emily Ferenczi",
-         "group":"2010",
-         "keywords":"neuroscience|neuroimaging|circuits|medicine|medical|disease|optogenetics",
-         "description":"Neuroscience, neurological disease and translational medicine, neuroimaging, neural circuits, optogenetics",
-         "size":8
+         "group":"2010"
       },
       {
          "id":"Filip Stankovikj",
-         "group":"2011",
-         "keywords":"liquors|energy|fuels|energy|bio-products|bio products|plants|design",
-         "description":"Aging of liquors, renewable energy, fuels and bio-products, design of processes and plants",
-         "size":8
+         "group":"2011"
       },
       {
          "id":"GUAN WANG",
-         "group":"2008",
-         "keywords":"precision medicine|medicine|drug development|brain diseases|mental retardation|diseases|epilepsy",
-         "description":"Precision medicine and clinical drug development of any brain diseases (e.g. Alzheimer's diseaeses, epilepsy, mental retardation). ",
-         "size":8
+         "group":"2008"
       },
       {
          "id":"Imre Treufeld",
-         "group":"2008",
-         "keywords":"engineering|country|people|communities|government|social engineering",
-         "description":"How to use social engineering to help communities if a country's government isn't doing enough for people?",
-         "size":8
+         "group":"2008"
       },
       {
          "id":"Ivana Peran",
-         "group":"2009",
-         "keywords":"immunomodulation|tumor-stroma crosstalk|cancer|medical|disease",
-         "description":"Immunomodulation of pancreatic cancer by targeting tumor-stroma crosstalk",
-         "size":8
+         "group":"2009"
       },
       {
          "id":"Jephias Gwamuri",
-         "group":"2012",
-         "keywords":"entrepreneaur|business",
-         "description":"In the process of starting my own company.",
-         "size":8
+         "group":"2012"
       },
       {
          "id":"Jonathan Rameseder",
-         "group":"2008",
-         "keywords":"intellectual property law|law",
-         "description":"Intellectual Property Law",
-         "size":8
+         "group":"2008"
       },
       {
          "id":"Krisada Mick Kritayakirana ",
-         "group":"2007",
-         "keywords":"transportation|vehicles|urban transportation",
-         "description":"Urban transportation, automotive, electric vehicles",
-         "size":8
+         "group":"2007"
       },
       {
          "id":"Lamis Yehia",
-         "group":"2011",
-         "keywords":"genomics|cancer|medical|disease|healthcare|health|mentorship",
-         "description":"Genomics, healthcare, cancer, mentorship",
-         "size":8
+         "group":"2011"
       },
       {
          "id":"Mcebisi Mkhwanazi",
-         "group":"2010",
-         "keywords":"food|security|food security|water resources|climate change|earth|earth observation|droughts|projects|fires|space satellite imagery|floods",
-         "description":"Food Security, Water Resources and Climate. I am currently working on projects involving earth observation. This is mostly the use of space satellite imagery to monitor water resources, droughts, floods and fires.",
-         "size":8
+         "group":"2010"
       },
       {
          "id":"Mehmet Dogar",
-         "group":"2008",
-         "keywords":"robotics|machine learning|artificial intelligence",
-         "description":"Robotics, Artificial Intelligence",
-         "size":8
+         "group":"2008"
       },
       {
          "id":"Michael Beeler",
-         "group":"2012",
-         "keywords":"high school program|country|countries|populations|learning technology|digital learning technology",
-         "description":"An ultra low-cost self-paced high school program using offline, off-grid digital learning technology, to serve marginalized populations in low-income countries",
-         "size":8
+         "group":"2012"
       },
       {
          "id":"Michel Eduardo Vargas Vallejo",
-         "group":"2010",
-         "keywords":"materials characterization|initiatives|remediation|collaboration|characterization|development|water treatment|water|water resources|biomaterials|sample analysis|projects|aspects|pedagogy|poverty reduction|justice|inclusion",
-         "description":"Materials characterization and development. I am currently working on initiatives related to water treatment, environmental remediation, and just starting with biomaterials. Collaboration is needed in different aspects related to characterization/ instrumentation time needed for sample analysis and international counterpart in projects.",
-         "size":8
+         "group":"2010"
       },
       {
          "id":"Nicholas Fancourt",
-         "group":"2011",
-         "keywords":"projects|project|health|pneumonia|public health intervention|country health system",
-         "description":"(1) Projects and questions that are focused on evaluating and modeling systems-level interventions in low and middle income country health systems, especially those related to universal health coverage. Lots of potential collaboration for those with systems engineering, mathematics, and computer science backgrounds. (2) The biology of childhood pneumonia, including etiology, novel diagnostic markers, assessment of interventions, and public health intervetions",
-         "size":8
+         "group":"2011"
       },
       {
          "id":"Po-Chun Hsu",
-         "group":"2010",
-         "keywords":"heating|heterostructure|cooling textile|textile|van der waals",
-         "description":"Radiative heating/cooling textile, Van der Waals heterostructure",
-         "size":8
+         "group":"2010"
       },
       {
          "id":"Saul Daniel Ddumba",
-         "group":"2010",
-         "keywords":"technologies|water|water resources|climate change|energy|health|countries|skills|food production|food|agriculture|sector|education|innovations|innovation|projects",
-         "description":"Technologies leading to increasing food production using less or little water resources, climate change work in agriculture, water, energy and health sector. And projects focused on improving education and developing skills and innovations for developing countries.",
-         "size":8
+         "group":"2010"
       },
       {
          "id":"Syed Ishtiaque Ahmed",
-         "group":"2011",
-         "keywords":"course|people|school|knowledge|farming|development|teachers|countries|livelihood|fishing",
-         "description":"Development of an online course where the teachers will be the ones in developing countries, who never went to school. People who earn their livelihood through farming, fishing, or cobbling, will teach the knowledge needed for sustainable development. ",
-         "size":8
+         "group":"2011"
       },
       {
          "id":"Tamaki Bieri",
-         "group":"2010",
-         "keywords":"marine|marine conservation|conservation finance mainstream",
-         "description":"How to make marine conservation finance mainstream",
-         "size":8
+         "group":"2010"
       },
       {
          "id":"Vivek Bhandari",
-         "group":"2012",
-         "keywords":"energy|environment",
-         "description":"Energy and environment",
-         "size":8
+         "group":"2012"
       },
       {
          "id":"Watheq Al-Mudhafar",
-         "group":"2011",
-         "keywords":"geostatitical|geostatitical modelling|enhance oil recovery|oil recovery",
-         "description":"Geostatitical Modeling and Enhance Oil Recovery",
-         "size":8
+         "group":"2011"
       },
       {
          "id":"Youngseok Kim",
-         "group":"2010",
-         "keywords":"quantum computing|phases|matter|superconductivity|insulator|topological superconductivity",
-         "description":"Quantum computing, topological phases of matter (topological insulator, topological superconductivity)",
-         "size":8
+         "group":"2010"
       }
    ],
    "links":[
@@ -299,11 +203,6 @@
       {
          "source":"Ellen Roche",
          "target":"Lamis Yehia",
-         "value":1
-      },
-      {
-         "source":"Ellen Roche",
-         "target":"Nicholas Fancourt",
          "value":1
       },
       {
@@ -408,11 +307,6 @@
       },
       {
          "source":"Lamis Yehia",
-         "target":"Nicholas Fancourt",
-         "value":1
-      },
-      {
-         "source":"Lamis Yehia",
          "target":"Saul Daniel Ddumba",
          "value":1
       },
@@ -483,16 +377,6 @@
       },
       {
          "source":"Nicholas Fancourt",
-         "target":"Ellen Roche",
-         "value":1
-      },
-      {
-         "source":"Nicholas Fancourt",
-         "target":"Lamis Yehia",
-         "value":1
-      },
-      {
-         "source":"Nicholas Fancourt",
          "target":"Mcebisi Mkhwanazi",
          "value":1
       },
@@ -504,7 +388,7 @@
       {
          "source":"Nicholas Fancourt",
          "target":"Saul Daniel Ddumba",
-         "value":2
+         "value":1
       },
       {
          "source":"Saul Daniel Ddumba",
@@ -544,7 +428,7 @@
       {
          "source":"Saul Daniel Ddumba",
          "target":"Nicholas Fancourt",
-         "value":2
+         "value":1
       },
       {
          "source":"Saul Daniel Ddumba",
