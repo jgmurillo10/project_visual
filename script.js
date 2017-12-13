@@ -142,7 +142,7 @@
       content.text(d.description);
       tooltip.text(d.id );
       if (d.picture !== "") {
-        img.attr('src','./grantee_photos/'+d.group+'/'+d.picture)
+        img.attr('src','grantee_photos/'+d.group+'/'+d.picture)
       }else {
         img.attr('src', src_img)
       }
