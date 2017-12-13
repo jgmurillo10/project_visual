@@ -30,8 +30,14 @@
   var popoverBtn = popover.append("button")
                           .text("Close")
                           .on("click",closePopover);
+  var showPop = d3.select("#popover")
+                  .on("click", showPopover);
+  function showPopover() {
+    popover.style("visibility", "visible")
+           .style("opacity", 1)
+           .style("z-index", 999);
+  }
   function closePopover() {
-    console.log('closing');
     popover.style("visibility", "hidden")
            .style("opacity", 0)
            .style("z-index",-999);
@@ -126,7 +132,7 @@
           .attr("x2", function(d) { return d.target.x = Math.max(radius, Math.min(x - radius*10, d.target.x)); })
           .attr("y2", function(d) { return d.target.y = Math.max(radius, Math.min(y - radius*25, d.target.y)); });
       node
-          .attr("cx", function(d) { return d.x = Math.max(radius, Math.min(x - radius*2, d.x)); })
+          .attr("cx", function(d) { return d.x = Math.max(radius, Math.min(x - radius*10, d.x)); })
           .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(y - radius*25, d.y)); });
     }
     function handleMouseOver(d){
