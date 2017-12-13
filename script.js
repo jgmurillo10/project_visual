@@ -51,7 +51,7 @@
   var src_img ="http://littleblackdressgala.ca/wp-content/uploads/2017/11/profile-placeholder-500x500.png"
   var img = card.append("img")
                 .style("width","80%")
-                .attr('src',src_img);
+                .style("border-radius","50%");
   card.append("br")
   var content = card.append("div")
                     .text("content");
@@ -136,10 +136,17 @@
           .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(y - radius*25, d.y)); });
     }
     function handleMouseOver(d){
+      console.log(d);
       card.style("visibility","visible")
       title.text(d.id);
       content.text(d.description);
       tooltip.text(d.id );
+      if (d.picture !== "") {
+        img.attr('src','/grantee_photos/'+d.group+'/'+d.picture)
+      }else {
+        img.attr('src', src_img)
+      }
+
       if(clicked) {
         return tooltip.style("visibility", "visible");
       }
