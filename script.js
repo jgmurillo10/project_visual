@@ -136,7 +136,6 @@
           .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(y - radius*25, d.y)); });
     }
     function handleMouseOver(d){
-      console.log(d);
       card.style("visibility","visible")
       title.text(d.id);
       content.text(d.description);
