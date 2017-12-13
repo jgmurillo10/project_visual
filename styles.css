@@ -66,18 +66,41 @@ li{
   padding: 5px;
   margin: 5px;
 }
-.card {
+.popover {
   position: relative;
-  top: -85vh;
+  top: -70vh;
+  left: 30%;
+  height: 40vh;
+  width: 40%;
+  overflow-y: auto;
+  text-align: center;
+  background-color: rgba(36,156,213,0.5);
+  padding: 5px;
+  z-index: 90;
+  font-family: Helvetica,sans-serif;
+  font-weight: 100;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+}
+.card {
+  position: absolute;
+  top: 15vh;
   left: 79%;
+  height: 70vh;
+  overflow-y: auto;
   text-align: center;
   background-color: rgba(36,156,213,0.5);
   padding: 5px;
   width: 20%;
-  z-index: 9;
-  visibility: visible;
+  z-index: -99;
+  visibility: hidden;
   font-family: Helvetica,sans-serif;
   font-weight: 100;
+}
+.card > img {
+  margin-bottom: 1em;
+}
+.card > div {
+  text-align: left;
 }
 .tooltip {
   position: absolute;

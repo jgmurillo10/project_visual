@@ -17,17 +17,39 @@
                   .append("div")
                   .attr("class", "tooltip")
                   .text("a simple tooltip");
+  var popover = d3.select("body")
+                  .append("div")
+                  .style("visibility", "visible")
+                  .style("opacity",1)
+                  .attr("class","popover")
+  var instructions = "Here you can find a graph that represents the relationship between fulbright scientists according to their research topics. You can either hover any node that you might find interesting but also search for the reasearcher in intererest. If a node is hovered a card will be displayed showing the name, photo and description of the project or projects that the researcher is currently working on. Also, you can click a node to visualize just the node clicked and the first class family (?). To reset the view, click on the Reset view button in the top of the visualization."
+  var popoverTitle = popover.append("h1")
+                            .text("Instructions");
+  var popoverContent = popover.append("div")
+                              .text(instructions);
+  var popoverBtn = popover.append("button")
+                          .text("Close")
+                          .on("click",closePopover);
+  function closePopover() {
+    console.log('closing');
+    popover.style("visibility", "hidden")
+           .style("opacity", 0)
+           .style("z-index",-999);
+  }
   var card = d3.select("body")
                   .append("div")
                   .attr("class", "card")
                   // .text("Here is where the information about the person your hover will be shown. Information like Name, photo and description about the project he/she is currently working on.");
   var title = card.append("h1")
                   .text("title");
+  var src_img ="http://littleblackdressgala.ca/wp-content/uploads/2017/11/profile-placeholder-500x500.png"
   var img = card.append("img")
                 .style("width","80%")
-                .attr('src','https://es.miami-institute.com/wp-content/uploads/2015/02/placeholder-500x5001.gif');
+                .attr('src',src_img);
+  card.append("br")
   var content = card.append("div")
                     .text("content");
+
   var width = x,
       height = y,
       radius = 5,
@@ -169,7 +191,7 @@
     }
 
     function handleMouseOut(d,i){
-      card.style("visibility","hidden")
+      // card.style("visibility","hidden")
       if(clicked)
         return;
       link.style('stroke-width', function(l) {
