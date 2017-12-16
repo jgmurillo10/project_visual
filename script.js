@@ -22,7 +22,7 @@
                   .style("visibility", "visible")
                   .style("opacity",1)
                   .attr("class","popover")
-  var instructions = "Here you can find a graph that represents the relationship between Fulbright scientists according to their research topics. You can either hover any node that you might find interesting but also search for the reasearcher in intererest. If a node is hovered a card will be displayed showing the name, photo and description of the project or projects that the researcher is currently working on. Also, you can click a node to visualize just the node clicked and the related ones. To reset the view, click on the Reset view button in the top of the visualization or click on the main node. Also, the color of the node maps the cohort.";
+  var instructions = "Here you can find a graph that represents the relationship between Fulbright scientists according to their research topics. You can hover a node that you might find interesting but also search for the reasearcher in intererest. If a node is hovered a card will be displayed showing the name, photo and description of the project or projects that the researcher is currently working on. Also, you can click a node to visualize just the node clicked and the related ones. To reset the view, click on the Reset view button in the top of the visualization or click on the main node. Also, the color of the node maps the cohort.";
   var demo_video = 'https://www.youtube.com/embed/Co074RJXzdk';
 
   var popoverTitle = popover.append("h1")
