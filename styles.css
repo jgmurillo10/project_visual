@@ -68,10 +68,10 @@ li{
 }
 .popover {
   position: relative;
-  top: -70vh;
-  left: 30%;
-  height: 40vh;
-  width: 40%;
+  top: -80vh;
+  left: 10%;
+  height: 70vh;
+  width: 80%;
   overflow-y: auto;
   text-align: center;
   background-color: rgba(36,156,213,0.5);

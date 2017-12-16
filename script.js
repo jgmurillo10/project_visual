@@ -22,9 +22,21 @@
                   .style("visibility", "visible")
                   .style("opacity",1)
                   .attr("class","popover")
-  var instructions = "Here you can find a graph that represents the relationship between fulbright scientists according to their research topics. You can either hover any node that you might find interesting but also search for the reasearcher in intererest. If a node is hovered a card will be displayed showing the name, photo and description of the project or projects that the researcher is currently working on. Also, you can click a node to visualize just the node clicked and the first class family (?). To reset the view, click on the Reset view button in the top of the visualization."
+  var instructions = "Here you can find a graph that represents the relationship between Fulbright scientists according to their research topics. You can either hover any node that you might find interesting but also search for the reasearcher in intererest. If a node is hovered a card will be displayed showing the name, photo and description of the project or projects that the researcher is currently working on. Also, you can click a node to visualize just the node clicked and the related ones. To reset the view, click on the Reset view button in the top of the visualization or click on the main node. Also, the color of the node maps the cohort.";
+  var demo_video = 'https://www.youtube.com/embed/Co074RJXzdk';
+
   var popoverTitle = popover.append("h1")
                             .text("Instructions");
+
+  var video = popover.append("iframe")
+                     .attr('id','video')
+                     .attr('width',560)
+                     .attr('height',315)
+                     .attr('src',demo_video)
+                     .attr('frameborder',0)
+                     .attr('gesture','media')
+                     .attr('allow','encrypted-media');
+  document.getElementById('video').allowfullscreen = true;
   var popoverContent = popover.append("div")
                               .text(instructions);
   var popoverBtn = popover.append("button")
@@ -46,8 +58,15 @@
                   .append("div")
                   .attr("class", "card")
                   // .text("Here is where the information about the person your hover will be shown. Information like Name, photo and description about the project he/she is currently working on.");
+  // var closeCard = card.append('button')
+  //                     .style('float','right')
+  //                     .style('z-index',99999999)
+  //                     .text('close')
+  //                     .on('click',onCloseCard);
   var title = card.append("h1")
-                  .text("title");
+                  .text("title")
+  var cohort = card.append("h2")
+                   .text("")
   var src_img ="http://littleblackdressgala.ca/wp-content/uploads/2017/11/profile-placeholder-500x500.png"
   var img = card.append("img")
                 .style("width","80%")
@@ -55,6 +74,7 @@
   card.append("br")
   var content = card.append("div")
                     .text("content");
+
 
   var width = x,
       height = y,
@@ -77,7 +97,10 @@
     document.getElementById('back').disabled = true;
     updateGraph();
   }
-
+  function onCloseCard() {
+    console.log('onCloseCard');
+    card.style('visibility', 'hidden');
+  }
   function updateGraph() {
     d3.selectAll("g").remove();
     d3.selectAll("title").remove()
@@ -100,11 +123,25 @@
     options.exit().remove();
     var node = svg.append("g")
                   .attr("class", "nodes")
+                  .append('g')
                   .selectAll("circle")
                   .data(graph.nodes)
                   .enter().append("circle")
                   .attr("id",d => d.id.replace(' ','-'))
                   .attr("r", radius)
+                  // .append('defs')
+                  // .append('pattern')
+                  // .attr('id',function (d) {
+                  //   return d.id;
+                  // })
+                  // .append('image')
+                  // .attr('xlink:href',function (d) {
+                  //   return 'grantee_photos/'+d.group+'/'+d.picture;
+                  // })
+                  // .style("filter", function (d) {
+                  //   console.log(d);
+                  //   return d.picture ? "url("+ 'grantee_photos/'+d.group+'/'+d.picture + ")": "#fff";
+                  // })
                   .attr("fill", d => color(d.group))
                   .call(d3.drag()
                       .on("start", dragstarted)
@@ -114,7 +151,18 @@
                       .on("mouseout", handleMouseOut)
                       .on("mousemove", handleMouseMove)
                       .on("click", handleClick);
-
+    node.append('defs')
+        .append('pattern')
+        .attr('id', d=>d.id)
+        .append('image')
+        .attr('xlink:href',function (d) {
+          console.log(d);
+          return 'grantee_photos/'+d.group+'/'+d.picture;
+        })
+        .attr("x", function(d) { return d.x;})
+        .attr("y", function(d) { return d.y;})
+        .attr("height", 50)
+        .attr("width", 50);
     node.append("title")
         .text(function(d) { return d.id; });
     simulation
@@ -138,6 +186,8 @@
     function handleMouseOver(d){
       card.style("visibility","visible")
       title.text(d.id);
+      console.log(d);
+      cohort.text(d.group);
       content.text(d.description);
       tooltip.text(d.id );
       if (d.picture !== "") {
