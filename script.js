@@ -65,7 +65,8 @@
   //                     .on('click',onCloseCard);
   var title = card.append("h1")
                   .text("title")
-  var cohort = card.append("h2")
+  var mail = card.append("a");
+  var cohort = card.append("h3")
                    .text("")
   var src_img ="http://littleblackdressgala.ca/wp-content/uploads/2017/11/profile-placeholder-500x500.png"
   var img = card.append("img")
@@ -184,7 +185,10 @@
           .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(y - radius*25, d.y)); });
     }
     function handleMouseOver(d){
-      card.style("visibility","visible")
+      card.style("visibility","visible");
+      var mailto = 'mailto:';
+      mail.attr('href',mailto + d.mail);
+      mail.text('Mail me!');
       title.text(d.id);
       console.log(d);
       cohort.text(d.group);
@@ -338,7 +342,7 @@
       previousNode = selectedValue;
     }
   }
-  d3.json("graph.json", function(error, newgraph) {
+  d3.json("graph_mail.json", function(error, newgraph) {
     if (error) throw error;
     graph = newgraph
     updateGraph()
